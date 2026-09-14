@@ -15,7 +15,7 @@ public class Arma : MonoBehaviour
     Slider ForceSlider;
 
     [SerializeField]
-    float Force = 0f;
+    float Force = 1f;
 
     [SerializeField]
     TextMeshProUGUI ForceText;
@@ -35,9 +35,22 @@ public class Arma : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI angleText;
 
+    [SerializeField]
+    Slider massSlider;
+
+    [SerializeField]
+    TextMeshProUGUI massText;
+
+    [SerializeField]
+    float Mass = 1f;
+
     void Start()
     {
-        
+        massSlider.value = Mass;
+        massText.text = "Masa: " + Mass.ToString("F1") + " kg";
+
+        ForceSlider.value = Force;
+        ForceText.text = "Fuerza: " + Force.ToString("F1");
     }
 
     void Update()
@@ -55,6 +68,10 @@ public class Arma : MonoBehaviour
     {
         GameObject newProyectil = Instantiate(Proyectil, SpawnPoint.position, SpawnPoint.rotation);
         newProyectil.GetComponent<Rigidbody>().AddForce(SpawnPoint.up * Force, ForceMode.Impulse);
+        Rigidbody rb = newProyectil.GetComponent<Rigidbody>();
+
+        rb.mass = Mass;
+        rb.AddForce(SpawnPoint.up * Force, ForceMode.Impulse);
 
         ProjectileTracking pelotaScript = newProyectil.GetComponent<ProjectileTracking>();
         if (pelotaScript != null)
@@ -62,6 +79,7 @@ public class Arma : MonoBehaviour
             pelotaScript.anguloY = angleSliderY.value;
             pelotaScript.anguloZ = angleSliderZ.value;
             pelotaScript.fuerzaDisparo = Force;
+            pelotaScript.masaDisparo = Mass;
         }
 
         Destroy(newProyectil, 5f);
@@ -91,5 +109,10 @@ public class Arma : MonoBehaviour
         float z = angleSliderZ.value;
 
         transform.rotation = Quaternion.Euler(0, y, z);
+    }
+    public void ChangeMass()
+    {
+        Mass = massSlider.value;
+        massText.text = "Masa: " + Mass.ToString("F1") + " kg";
     }
 }

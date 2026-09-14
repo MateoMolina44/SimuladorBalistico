@@ -6,7 +6,7 @@ public class ProjectileTracking : MonoBehaviour
     private float startTime;
     private bool hasHitGround = false;
 
-    [HideInInspector] public float anguloX, anguloY, anguloZ, fuerzaDisparo;
+    [HideInInspector] public float anguloX, anguloY, anguloZ, fuerzaDisparo, masaDisparo;
 
     void Start()
     {

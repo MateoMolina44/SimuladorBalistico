@@ -37,6 +37,7 @@ public class RegistroDisparos : MonoBehaviour
             texto += "#" + d.numero +
                 " | X:" + d.anguloX.ToString("F1") + "° Y:" + d.anguloY.ToString("F1") + "° Z:" + d.anguloZ.ToString("F1") +
                 "° F:" + d.fuerza.ToString("F1") +
+                " M:" + d.masa.ToString("F1") + "kg" +
                 " | Dist: " + d.distancia.ToString("F2") + "m" +
                 " | T: " + d.tiempoVuelo.ToString("F2") + "s\n";
         }

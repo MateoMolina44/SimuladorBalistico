@@ -8,4 +8,5 @@ public class DisparoData
     public float fuerza;
     public float distancia;
     public float tiempoVuelo;
+    public float masa;
 }
