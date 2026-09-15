@@ -10,6 +10,8 @@ public class RegistroDisparos : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI historialText;
 
+    private int cubosDerribados = 0;
+
     private List<DisparoData> historial = new List<DisparoData>();
 
     void Awake()
@@ -28,13 +30,19 @@ public class RegistroDisparos : MonoBehaviour
         ActualizarTexto();
     }
 
+    public void CuboDerribado()
+    {
+        cubosDerribados++;
+        ActualizarTexto();
+    }
+
     private void ActualizarTexto()
     {
-        string texto = "";
+        string texto = "Cubos derribados: " + cubosDerribados + "\n";
 
         foreach (var d in historial)
         {
-            texto += "#" + d.numero +
+            texto += "\n" + "#" + d.numero +
                 " | X:" + d.anguloX.ToString("F1") + "° Y:" + d.anguloY.ToString("F1") + "° Z:" + d.anguloZ.ToString("F1") +
                 "° F:" + d.fuerza.ToString("F1") +
                 " M:" + d.masa.ToString("F1") + "kg" +

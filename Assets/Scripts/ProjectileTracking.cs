@@ -33,7 +33,8 @@ public class ProjectileTracking : MonoBehaviour
                 anguloZ = anguloZ,
                 fuerza = fuerzaDisparo,
                 distancia = distancia,
-                tiempoVuelo = tiempoVuelo
+                tiempoVuelo = tiempoVuelo,
+                masa = masaDisparo
             };
 
             RegistroDisparos.Instance.RegistrarDisparo(data);
