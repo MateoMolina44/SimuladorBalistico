@@ -2,7 +2,7 @@
 - Project name: SimuladorBalistico
 - Unity version: Unity 6000.4.6f1
 - Active game object:
-  - Name: Target (21)
+  - Name: HistorialGuardado
   - Tag: Untagged
   - Layer: Default
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->

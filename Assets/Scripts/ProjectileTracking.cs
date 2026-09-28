@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ProjectileTracking : MonoBehaviour
@@ -5,6 +6,8 @@ public class ProjectileTracking : MonoBehaviour
     private Vector3 startPosition;
     private float startTime;
     private bool hasHitGround = false;
+    private bool acierto = false;
+    private HashSet<GameObject> objetosGolpeados = new HashSet<GameObject>();
 
     [HideInInspector] public float anguloX, anguloY, anguloZ, fuerzaDisparo, masaDisparo;
 
@@ -16,6 +19,13 @@ public class ProjectileTracking : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        TargetCube cubo = collision.gameObject.GetComponent<TargetCube>();
+        if (cubo != null)
+        {
+            acierto = true;
+            objetosGolpeados.Add(collision.gameObject);
+        }
+
         if (hasHitGround) return;
 
         if (collision.gameObject.CompareTag("Ground"))
@@ -32,9 +42,11 @@ public class ProjectileTracking : MonoBehaviour
                 anguloY = anguloY,
                 anguloZ = anguloZ,
                 fuerza = fuerzaDisparo,
+                masa = masaDisparo,
                 distancia = distancia,
                 tiempoVuelo = tiempoVuelo,
-                masa = masaDisparo
+                acierto = acierto,
+                objetosAfectados = objetosGolpeados.Count
             };
 
             RegistroDisparos.Instance.RegistrarDisparo(data);

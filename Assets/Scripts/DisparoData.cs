@@ -6,7 +6,9 @@ public class DisparoData
     public float anguloY;
     public float anguloZ;
     public float fuerza;
+    public float masa;
     public float distancia;
     public float tiempoVuelo;
-    public float masa;
+    public bool acierto;
+    public int objetosAfectados;
 }
