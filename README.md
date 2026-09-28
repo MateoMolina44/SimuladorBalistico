@@ -4,7 +4,7 @@ Simulador desarrollado en Unity donde el jugador ajusta ángulo, fuerza y masa d
 
 ## Video demostrativo
 
-[Ver video en YouTube](https://youtu.be/keF4kFV1EiM)
+[Ver video en YouTube](https://youtu.be/qRo8Mi6fKJU)
 
 ## Versión de Unity
 
